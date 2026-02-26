@@ -1,4 +1,5 @@
 import './sections.css'
+import schoolImage from '../assets/nihongo-gakkou.jpeg'
 import { FiUsers, FiClock, FiGlobe } from 'react-icons/fi'
 import { FaGraduationCap } from 'react-icons/fa'
 
@@ -8,7 +9,9 @@ export function PartnerSchoolSection() {
       <div className="container school-layout">
         <div className="school-layout__left">
           <div className="school-media">
-            <div className="school-media__image" />
+          <div className="school-media__image">
+  <img src={schoolImage} alt="École Nihongo Gakkou" />
+</div>
             <div className="school-media__badge">
               <p className="school-media__badge-value">10+</p>
               <p className="school-media__badge-label">Années d&apos;excellence</p>

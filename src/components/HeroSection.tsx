@@ -1,8 +1,14 @@
 import './sections.css'
+import heroImage from '../assets/ganvié-23.jpg'
 
 export function HeroSection() {
   return (
     <section id="hero" className="section hero">
+      
+      <div className="hero__background">
+        <img src={heroImage} alt="Bénin paysage" />
+      </div>
+
       <div className="container hero__content">
         <p className="badge">En partenariat avec NIHONGO GAKKOU</p>
         <h1 className="hero__title">
@@ -25,4 +31,3 @@ export function HeroSection() {
     </section>
   )
 }
-

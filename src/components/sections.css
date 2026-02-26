@@ -53,8 +53,11 @@ body {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-weight: 600;
   font-size: 1.1rem;
+  color: #111827
 }
-
+header.site-header .site-header__brand-main {
+  color: #111827 !important;
+}
 .site-header__brand-accent {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-weight: 600;
@@ -104,7 +107,7 @@ body {
 .site-header__cta {
   background: #d04a25;
   color: #ffffff;
-  border-radius: 999px;
+  border-radius: 0.6rem;
   padding: 0.55rem 1.3rem;
   font-size: 0.9rem;
   text-decoration: none;
@@ -113,6 +116,7 @@ body {
 
 .site-header__cta:hover {
   background: #b33d1d;
+  border-radius: 0.6rem;
 }
 
 @media (max-width: 900px) {
@@ -381,37 +385,65 @@ body {
   justify-content: flex-end;
 }
 
+/* Container principal des photos */
 .about-photos {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.9rem;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes égales */
+  gap: 1.5rem; /* Espace entre les images */
+  max-width: 600px;
+  width: 100%;
 }
 
+/* Colonne de gauche */
+.about-photos__col-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Colonne de droite (celle qui crée le décalage) */
+.about-photos__col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 2rem; /* C'est ce padding qui crée l'effet décalé */
+}
+
+/* Style commun des photos */
 .about-photo {
-  width: 150px;
-  height: 120px;
-  border-radius: 1.1rem;
+  width: 100%;
+  border-radius: 1.5rem; /* Arrondis plus modernes */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Ombre élégante */
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
 }
 
-.about-photo--1 {
-  background-image: linear-gradient(135deg, #f97341, #fbbf24);
+/* Hauteurs spécifiques pour l'effet asymétrique */
+.about-photo--1 { height: 200px; }
+.about-photo--2 { height: 280px; } /* Image longue à gauche */
+.about-photo--3 { height: 280px; } /* Image longue à droite */
+.about-photo--4 { height: 200px; }
+
+/* Effet Hover */
+.about-photo:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.about-photo--2 {
-  background-image: linear-gradient(135deg, #22c55e, #bef264);
+/* Responsive */
+@media (max-width: 600px) {
+  .about-photos {
+    gap: 1rem;
+  }
+  .about-photos__col-2 {
+    padding-top: 1rem;
+  }
+  .about-photo {
+    border-radius: 1rem;
+  }
 }
-
-.about-photo--3 {
-  background-image: linear-gradient(135deg, #38bdf8, #a5b4fc);
-}
-
-.about-photo--4 {
-  background-image: linear-gradient(135deg, #f97373, #fb7185);
-}
-
 @media (max-width: 900px) {
   .about-layout__right {
     justify-content: flex-start;
@@ -446,11 +478,16 @@ body {
 }
 
 .school-media__image {
-  min-height: 280px;
+  min-height: 320px;
   height: 100%;
-  background-image: linear-gradient(135deg, #111827, #f97373);
-  background-size: cover;
-  background-position: center;
+  position: relative;
+}
+
+.school-media__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garde proportions */
+  display: block;
 }
 
 .school-media__badge {
@@ -569,6 +606,166 @@ body {
 .school-actions__secondary:hover {
   background: rgba(208, 74, 37, 0.06);
 }
+
+/* Section Destinations */
+/* --- SECTION DESTINATIONS --- */
+.section--destinations {
+  background-color: #fdf7f5; /* Bleu-gris très léger pour trancher avec le blanc */
+  padding-block: 5rem;
+}
+
+/* Header Centré */
+.section--destinations .section__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3.5rem auto; /* Margin auto centre le bloc */
+}
+
+.section--destinations .section__eyebrow {
+  color: #d04a25;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem; /* Réduit l'espace */
+}
+
+.section--destinations .section__title {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 0.25rem; /* COLLÉ au sous-titre */
+  color: #111827;
+}
+
+.section--destinations .section__subtitle {
+  margin-top: 0;
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.5;
+  width: 100%; 
+}
+
+/* Grille */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Cartes */
+.dest-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.dest-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.dest-card__image-wrapper {
+  position: relative;
+  height: 220px; /* Taille équilibrée */
+  overflow: hidden;
+}
+
+.dest-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dest-card:hover .dest-card__img {
+  transform: scale(1.1);
+}
+
+.dest-card__body {
+  padding: 1.5rem;
+}
+
+.dest-card__tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(208, 74, 37, 0.1);
+  color: #d04a25;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.dest-card__description {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* --- Bouton "Découvrir" (celui dans la carte) --- */
+.dest-card__btn {
+  background: none;
+  border: none;
+  color: #111827;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  transition: gap 0.3s ease;
+
+}
+
+
+
+.dest-card__btn:hover {
+  color: #b33d1d; /* Un peu plus foncé au survol */
+  gap: 0.8rem; /* Petit effet de mouvement de la flèche */
+}
+
+/* --- Bouton "Voir toutes les destinations" (en bas de section) --- */
+/* Bouton Voir tout */
+
+.section__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+
+
+.btn--accent {
+  background: #d04a25;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+}
+
+
+
+.btn--accent:hover {
+  background: #b03e1f;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(208, 74, 37, 0.2);
+}
+
 
 /* Guides & disponibilité */
 
@@ -720,119 +917,298 @@ body {
 }
 
 /* Footer foncé avec colonnes */
-
-.site-footer {
-  background: #000000;
-  color: #e5e7eb;
-  padding-block: 3rem 1.5rem;
-}
-
-.site-footer__content {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.site-footer__top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 2.5rem;
-}
-
-@media (max-width: 900px) {
-  .site-footer__top {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+   .site-footer {
+    background-color: #000000; /* Fond noir pur */
+    color: #e5e7eb;
+    padding-block: 5rem 2rem; /* Plus d'air pour un look aéré */
+    font-family: 'Inter', system-ui, sans-serif;
   }
-}
-
-@media (max-width: 640px) {
-  .site-footer__top {
-    grid-template-columns: 1fr;
+  
+  .site-footer__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
   }
-}
+  
+  /* Grille principale */
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  /* Responsiveness pour tablettes et mobiles */
+  @media (max-width: 1024px) {
+    .site-footer__top {
+      grid-template-columns: 1.5fr 1fr 1.2fr;
+    }
+    .footer-column--brand {
+      grid-column: 1 / -1; /* La marque prend toute la largeur sur tablette */
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .site-footer__top {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .site-footer__top {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+  
+  /* --- Typographie & Logos --- */
+  .footer-column__title {
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.8rem;
+  }
+  
+  .site-footer__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    display: flex;
+    gap: 0.3rem;
+  }
+  
+  .site-header__brand-main { color: #ffffff; }
+  .site-header__brand-accent { color: #d04a25; font-style: italic; font-weight: 300; }
+  
+  .site-footer__text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #9ca3af;
+    max-width: 20rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* --- Navigation & NavLinks (Correction Erreur) --- */
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Cible explicitement les NavLinks qui deviennent des <a> */
+  .footer-links li a,
+  .footer-links li {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .footer-links li a:hover {
+    color: #d04a25; /* Orange au survol */
+    transform: translateX(6px); /* Petit décalage vers la droite */
+    display: inline-block;
+  }
+  
+  /* Style pour le NavLink actif dans le footer */
+  .footer-links a.active {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  
+  /* --- Section Contact avec Icônes --- */
+  .footer-links--contact {
+    gap: 1.2rem;
+  }
+  
+  .footer-links--contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    color: #d1d5db;
+  }
+  
+  .footer-icon {
+    color: #d04a25;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+  
+  .footer-links--contact a {
+    color: inherit;
+    transition: color 0.2s;
+  }
+  
+  .footer-links--contact a:hover {
+    color: #ffffff;
+  }
+  
+  /* --- Réseaux Sociaux --- */
+  .site-footer__socials {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-dot {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+  }
+  
+  .social-dot:hover {
+    background: #d04a25;
+    border-color: #d04a25;
+    transform: translateY(-5px);
+    color: #ffffff;
+  }
+  
+  /* --- Barre de Copyright --- */
+  .site-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
+  
+  .site-footer__bottom-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .site-footer__bottom-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .site-footer__bottom-links a:hover {
+    color: #ffffff;
+  }
+  
+  @media (max-width: 640px) {
+    .site-footer__bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  }
 
-.footer-column__title {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 0.8rem;
-}
+/* =====================================================
+   HERO FINAL PROPRE (compatible avec ton design)
+===================================================== */
 
-.site-footer__logo {
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.site-footer__text {
-  font-size: 0.85rem;
-  color: #d1d5db;
-  max-width: 18rem;
-}
-
-.site-footer__socials {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.9rem;
-}
-
-.social-dot {
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  border: 1px solid #374151;
+.hero {
+  position: relative;
+  min-height: 70vh; /* hauteur équilibrée */
+  padding-block: 5rem 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
+  overflow: hidden;
+  text-align: center;
+  color: #ffffff;
 }
 
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.85rem;
+/* Background image */
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.footer-links a {
-  color: #e5e7eb;
-  text-decoration: none;
+.hero__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* images proportionnées */
+  object-position: center;
 }
 
-.footer-links a:hover {
-  text-decoration: underline;
+/* Overlay sombre élégant */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.65)
+  );
+  z-index: 1;
 }
 
-.footer-links--contact li {
-  color: #d1d5db;
+/* Contenu */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 46rem;
 }
 
-.site-footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.8rem;
-  color: #9ca3af;
-  border-top: 1px solid #1f2937;
-  padding-top: 1.2rem;
-  margin-top: 0.5rem;
+/* =========================
+   VERSION SLIDER (si tu utilises 3 images)
+   Sinon ignore cette partie
+========================= */
+
+.hero__slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.site-footer__bottom-links {
-  display: flex;
-  gap: 1.3rem;
+.hero__slider img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.site-footer__bottom-links a {
-  color: #9ca3af;
-  text-decoration: none;
+.hero__slider img.active {
+  opacity: 1;
 }
 
-.site-footer__bottom-links a:hover {
-  text-decoration: underline;
+/* Dots */
+.hero__dots {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
 }
 
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #f97341;
+  transform: scale(1.2);
+}

@@ -8,7 +8,7 @@ export function HomePage() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
+      <AboutSection/>
       <PartnerSchoolSection />
       <DestinationsSection />
       <GuidesSection />

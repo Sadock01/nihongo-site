@@ -1,5 +1,9 @@
 import './sections.css'
 import { FiGlobe, FiUsers, FiLayers, FiFeather } from 'react-icons/fi'
+import img1 from '../assets/musée-marina.jpg';
+import img2 from '../assets/vod-1.jpg';
+import img3 from '../assets/ouadada-riviere-noire-1.jpg';
+import img4 from '../assets/place-no.jpg';
 
 export function AboutSection() {
   return (
@@ -62,13 +66,34 @@ export function AboutSection() {
           </div>
         </div>
         <div className="about-layout__right">
-          <div className="about-photos">
-            <div className="about-photo about-photo--1" />
-            <div className="about-photo about-photo--2" />
-            <div className="about-photo about-photo--3" />
-            <div className="about-photo about-photo--4" />
-          </div>
-        </div>
+  <div className="about-photos">
+    
+    {/* COLONNE GAUCHE (Reçoit l'image 1 et 2) */}
+    <div className="about-photos__col-1">
+      <div 
+        className="about-photo about-photo--1" 
+        style={{ backgroundImage: `url(${img1})` }} 
+      />
+      <div 
+        className="about-photo about-photo--2" 
+        style={{ backgroundImage: `url(${img2})` }} 
+      />
+    </div>
+
+    {/* COLONNE DROITE (Reçoit l'image 3 et 4) */}
+    <div className="about-photos__col-2">
+      <div 
+        className="about-photo about-photo--3" 
+        style={{ backgroundImage: `url(${img3})` }} 
+      />
+      <div 
+        className="about-photo about-photo--4" 
+        style={{ backgroundImage: `url(${img4})` }} 
+      />
+    </div>
+
+  </div>
+</div>
       </div>
     </section>
   )
