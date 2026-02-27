@@ -1,5 +1,8 @@
+import { motion, useInView } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+import { useRef } from 'react';
 import { FiMapPin, FiStar, FiArrowRight } from 'react-icons/fi';
-import ouidahImage from '../assets/place-no.jpg'; // Adapte tes imports
+import ouidahImage from '../assets/place-no.jpg';
 import abomeyImage from '../assets/palais-royal-sav.jpg';
 import pendjariImage from '../assets/pendjari.jpg';
 
@@ -33,21 +36,60 @@ const destinations = [
   },
 ];
 
+// Animation pour l'en-tête (apparaît du bas)
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: "easeOut" } 
+  }
+};
+
+// Animation pour les cartes (effet de montée)
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: "easeOut" } 
+  }
+};
+
 export function DestinationsSection() {
+  const scrollRef = useRef(null);
+  // On déclenche l'animation quand la section est visible à 20%
+  const isInView = useInView(scrollRef, { once: true, margin: "-100px" });
+
   return (
-    <section id="destinations" className="section section--destinations">
+    <section id="destinations" className="section section--destinations" ref={scrollRef}>
       <div className="container">
-        <header className="section__header text-center">
+        
+        {/* En-tête de section animé */}
+        <motion.header 
+          className="section__header text-center"
+          variants={headerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           <span className="section__eyebrow">Destinations Populaires</span>
           <h2 className="section__title">Les incontournables du Bénin</h2>
           <p className="section__subtitle">
             Découvrez les sites les plus emblématiques du pays, entre histoire millénaire et nature préservée.
           </p>
-        </header>
+        </motion.header>
 
         <div className="destinations-grid">
-          {destinations.map((dest) => (
-            <article key={dest.id} className="dest-card group">
+          {destinations.map((dest, index) => (
+            <motion.article 
+              key={dest.id} 
+              className="dest-card group"
+              variants={cardVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              // Délai progressif : 0.2s, 0.4s, 0.6s...
+              transition={{ delay: index * 0.2 }} 
+            >
               {/* Image Container */}
               <div className="dest-card__image-wrapper">
                 <img src={dest.image} alt={dest.name} className="dest-card__img" />
@@ -77,13 +119,19 @@ export function DestinationsSection() {
                   Découvrir <FiArrowRight className="icon-arrow" />
                 </button>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 
-        <div className="section__footer">
+        {/* Footer de section (bouton du bas) */}
+        <motion.div 
+          className="section__footer"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.8 }}
+        >
           <button className="btn btn--accent">Voir toutes les destinations</button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

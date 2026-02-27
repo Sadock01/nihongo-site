@@ -2,7 +2,7 @@ import { HeroSection } from '../../components/HeroSection'
 import { AboutSection } from '../../components/AboutSection'
 import { PartnerSchoolSection } from '../../components/PartnerSchoolSection'
 import { DestinationsSection } from '../../components/DestinationsSection'
-import { GuidesSection } from '../../components/GuidesSection'
+// import { GuidesSection } from '../../components/GuidesSection'
 
 export function HomePage() {
   return (
@@ -11,7 +11,7 @@ export function HomePage() {
       <AboutSection/>
       <PartnerSchoolSection />
       <DestinationsSection />
-      <GuidesSection />
+      {/* <GuidesSection /> */}
     </>
   )
 }
