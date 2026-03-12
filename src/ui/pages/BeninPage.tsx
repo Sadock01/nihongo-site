@@ -26,7 +26,7 @@ const BeninPage = () => {
     <div className="benin-page">
       
       {/* SECTION HEADER */}
-      <section style={{ backgroundColor: 'var(--bg-creme)', padding: '100px 0 80px 0' }}>
+      <section style={{ backgroundColor: 'var(--bg-creme)', padding: '10px 0 80px 0' }}>
         <div className="page-container" style={{ textAlign: 'center' }}>
           <motion.span 
             initial={{ opacity: 0, y: -10 }}
@@ -107,7 +107,7 @@ const BeninPage = () => {
       </section>
 
       {/* SECTION STATS */}
-      <section style={{ backgroundColor: 'var(--bg-creme)', padding: '100px 0', borderTop: '1px solid #E5E7EB' }}>
+      <section style={{ backgroundColor: 'var(--bg-creme)', padding: '10px 0', borderTop: '1px solid #E5E7EB' }}>
         <div className="page-container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px' }}>
             {[
