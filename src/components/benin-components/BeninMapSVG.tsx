@@ -14,7 +14,7 @@ const BeninMapSVG = ({ selectedDepartment, onSelectDepartment }: {
       <svg
         // Tes données vont de Y=12 à Y=635 environ. 
         // Ce viewBox est optimisé pour tes coordonnées spécifiques.
-        viewBox="0 0 300 650" 
+         viewBox="0 0 827.668 1559.46"
         className="w-full h-auto max-h-[75vh] drop-shadow-2xl"
       >
         <defs>

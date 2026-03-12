@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BeninMapSVG from '@/components/benin-components/BeninMapSVG';
 import CommuneDetailPanel from '@/components/benin-components/CommuneDetailPanel';
 import { getDepartmentById, type CommuneData } from '@/data/benin-data';
-import BeninMapInteractive from '@/components/benin-map/CarteInteractive';
+import BeninMapInteractive from '@/components/benin-map/BeninMapInteractive';
 import CarteInteractiveBenin from '@/components/benin-map/CarteInteractive';
-
+import AliboriSvg from '@/components/benin-map/AliboriSvg';
 const BeninPage = () => {
   const [selectedDeptId, setSelectedDeptId] = useState<string | null>(null);
   const [selectedCommune, setSelectedCommune] = useState<CommuneData | null>(null);
@@ -87,18 +87,18 @@ const BeninPage = () => {
             margin: '0 auto',
             boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.02)'
           }}>
-            <CarteInteractiveBenin
+            <BeninMapInteractive
               // selectedDepartment={selectedDeptId} 
               // onSelectDepartment={handleSelectDepartment} 
             />
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginTop: '40px', fontSize: '14px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#D1CEC5' }} />
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#f5f5dc' }} />
                 <span>Département</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--color-accent)' }} />
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#c12737' }} />
                 <span>Sélectionné</span>
               </div>
             </div>
