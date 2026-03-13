@@ -23,6 +23,55 @@ const BeninPage = () => {
 
   return (
     <div className="benin-page">
+            
+      {/* SECTION HEADER */}
+      <section style={{ backgroundColor: 'var(--bg-creme)', padding: '10px 0 80px 0' }}>
+        <div className="page-container" style={{ textAlign: 'center' }}>
+          <motion.span 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ 
+              color: '#d04a25', // Guillemets ajoutés ici
+              fontSize: '14px', 
+              fontWeight: 900, 
+              letterSpacing: '0.2em', 
+              textTransform: 'uppercase',
+              display: 'block',
+              marginBottom: '5px'
+            }}
+          >
+            Explorer le Bénin
+          </motion.span>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-serif"
+            style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: 900, marginBottom: '24px' }}
+          >
+            Les 77 Communes du Bénin
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            style={{ 
+              maxWidth: '800px', 
+              margin: '0 auto', 
+              color: 'var(--color-text-muted)', // Guillemets ajoutés ici
+              fontSize: '1.1rem', 
+              lineHeight: 1.6 
+            }}
+          >
+            Découvrez chaque département et ses communes : spécialités, hôtels, lieux historiques, 
+            gastronomie, traditions et habillement traditionnel.
+          </motion.p>
+        </div>
+      </section>
+
+    
+
       {/* SECTION HEADER (Inchangée) */}
       
       {/* SECTION CARTE + LISTE */}
