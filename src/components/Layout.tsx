@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react' // Correction du type-only import
-import { NavLink, Outlet } from 'react-router-dom'
+import type { ReactNode } from 'react'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { FiInstagram, FiFacebook, FiTwitter, FiMapPin, FiPhone, FiMail } from 'react-icons/fi'
 import './sections.css'
 
@@ -8,6 +8,9 @@ type LayoutProps = {
 }
 
 export function Layout({ children }: LayoutProps) {
+  const location = useLocation()
+  const isOnNihongo = location.pathname.startsWith('/nihongo-gakkou')
+
   return (
     <div className="page">
       {/* --- BARRE DE NAVIGATION (AppBar) --- */}
@@ -20,7 +23,25 @@ export function Layout({ children }: LayoutProps) {
           <nav className="site-header__nav">
             <NavLink to="/" end>Accueil</NavLink>
             <NavLink to="/benin">Bénin</NavLink>
-            <NavLink to="/nihongo-gakkou">NIHONGO GAKKOU</NavLink>
+            <div className="site-header__dropdown">
+              <NavLink to="/nihongo-gakkou" className="site-header__dropdown-trigger">
+                NIHONGO GAKKOU
+              </NavLink>
+              <div className="site-header__dropdown-menu">
+                <Link
+                  to="/nihongo-gakkou"
+                  className={`site-header__dropdown-item ${isOnNihongo ? 'site-header__dropdown-item--active' : ''}`}
+                >
+                  Présentation de l&apos;école
+                </Link>
+                <Link to="/nihongo-gakkou#programmes" className="site-header__dropdown-item">
+                  Programmes des cours
+                </Link>
+                <Link to="/nihongo-gakkou#activites" className="site-header__dropdown-item">
+                  Nos activités
+                </Link>
+              </div>
+            </div>
             <NavLink to="/destinations">Destinations</NavLink>
             <NavLink to="/guides">Guides</NavLink>
           </nav>

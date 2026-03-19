@@ -1,0 +1,296 @@
+.nihongo-intro {
+  background: #ffffff;
+  padding-block: 4rem 4.5rem;
+}
+
+.nihongo-intro__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .nihongo-intro__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nihongo-intro__text {
+  max-width: 40rem;
+}
+
+.nihongo-intro__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+  color: #111827;
+}
+
+.nihongo-intro__subtitle {
+  margin: 0 0 1.1rem;
+  font-size: 1rem;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.nihongo-intro__paragraph {
+  margin: 0 0 0.7rem;
+  font-size: 0.96rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.nihongo-intro__images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.nihongo-intro__image {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 1.3rem;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
+}
+
+.nihongo-intro__image--1 {
+  /* À remplacer plus tard par une vraie image de l'école */
+  background-image: url('src/assets/ganvie-1.jpg');
+}
+
+.nihongo-intro__image--2 {
+  background-image: url('src/assets/musée-marina.jpg');
+}
+
+.nihongo-intro__image--3 {
+  background-image: url('src/assets/ouadada-riviere-noire-1.jpg');
+}
+
+.nihongo-intro__image--4 {
+  background-image: url('src/assets/vod-1.jpg');
+}
+
+.nihongo-story {
+  background: #fdf7f5;
+  padding-block: 4rem 5rem;
+}
+
+.nihongo-story__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.nihongo-story__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.nihongo-story__eyebrow {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #d04a25;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.nihongo-story__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.1rem;
+  margin: 0 0 0.75rem;
+  color: #111827;
+}
+
+.nihongo-story__subtitle {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+.nihongo-timeline {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.nihongo-timeline__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(209, 213, 219, 0), #e5e7eb, rgba(209, 213, 219, 0));
+  transform: translateX(-50%);
+}
+
+.nihongo-timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  align-items: center;
+  margin-block: 2.5rem;
+}
+
+.nihongo-timeline__item--left {
+  direction: ltr;
+}
+
+.nihongo-timeline__item--right {
+  direction: rtl;
+}
+
+.nihongo-timeline__item--right .nihongo-timeline__card,
+.nihongo-timeline__item--right .nihongo-timeline__image {
+  direction: ltr;
+}
+
+.nihongo-timeline__card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.08);
+  border: 1px solid #f3e4d5;
+  position: relative;
+}
+
+.nihongo-timeline__badge {
+  position: absolute;
+  top: -0.9rem;
+  left: 1.6rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: #fbe3dd;
+  color: #b91c1c;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.nihongo-timeline__card-title {
+  margin: 0.5rem 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.nihongo-timeline__card-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.nihongo-timeline__image {
+  justify-self: center;
+  width: 200px;
+  height: 140px;
+  border-radius: 1.25rem;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+}
+
+.nihongo-timeline__image--placeholder {
+  background-image: linear-gradient(135deg, #f97373, #fb923c);
+  opacity: 0.9;
+}
+
+@media (max-width: 900px) {
+  .nihongo-timeline__item {
+    grid-template-columns: 1fr;
+  }
+
+  .nihongo-timeline__line {
+    left: 0.5rem;
+    transform: none;
+  }
+}
+
+/* SECTION 3 : PROFESSEURS */
+
+.nihongo-professors {
+  background: #ffffff;
+  padding-block: 3.5rem 4.5rem;
+}
+
+.nihongo-professors__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.nihongo-professors__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.nihongo-professor-card {
+  background: #fdf7f5;
+  border-radius: 1.3rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 0.9rem;
+  border: 1px solid #f3e4d5;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+}
+
+.nihongo-professor-card__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 1rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.nihongo-professor-card__image--1 {
+  background-image: url('src/assets/amazone-place.jpg');
+}
+
+.nihongo-professor-card__image--2 {
+  background-image: url('src/assets/musée-marina.jpg');
+}
+
+.nihongo-professor-card__image--3 {
+  background-image: url('src/assets/ouadada-riviere-noire-1.jpg');
+}
+
+.nihongo-professor-card__image--4 {
+  background-image: url('src/assets/vod-1.jpg');
+}
+
+.nihongo-professor-card__years {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b91c1c;
+}
+
+.nihongo-professor-card__name {
+  margin: 0.25rem 0 0.15rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.nihongo-professor-card__role {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.nihongo-professor-card__text {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.5;
+}

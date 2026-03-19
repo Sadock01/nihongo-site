@@ -907,6 +907,17 @@ export interface CommuneData {
   };
   
   export const getDepartmentById = (id: string) => departments.find(d => d.id === id);
+
+  /** Nom affiché sur la carte -> nom dans les données */
+  const mapDisplayNameToDataName: Record<string, string> = {
+    Kouffo: 'Couffo',
+    Ouemé: 'Ouémé',
+  };
+  export const getDepartmentByName = (name: string): DepartmentData | undefined => {
+    const dataName = mapDisplayNameToDataName[name] ?? name;
+    return departments.find(d => d.name === dataName);
+  };
+
   export const getCommuneById = (communeId: string) => {
     for (const dept of departments) {
       const commune = dept.communes.find(c => c.id === communeId);

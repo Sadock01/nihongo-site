@@ -1,0 +1,164 @@
+/* Même conteneur que la page Bénin */
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+.dest-page {
+  background: #fdf8f5;
+}
+
+/* Bannière (fond crème, comme page Bénin) */
+.dest-banner {
+  background-color: #fdf8f5;
+  padding: 1.5rem 0 4rem;
+}
+
+.dest-banner__inner {
+  text-align: center;
+}
+
+.dest-banner__eyebrow {
+  display: block;
+  color: #d04a25;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.dest-banner__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: #1f2933;
+  margin: 0;
+}
+
+.dest-banner__title span {
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+}
+
+/* Paragraphe centré (fond blanc) */
+.dest-intro {
+  background: #ffffff;
+  padding-block: 2.5rem 3rem;
+}
+
+.dest-intro__inner {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.dest-intro__text {
+  font-size: 0.98rem;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.dest-intro__link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.dest-intro__link:hover {
+  color: #1d4ed8;
+}
+
+/* Sections alternées : blanc / crème */
+.dest-section {
+  padding-block: 3.5rem 4rem;
+  background: #ffffff;
+}
+
+.dest-section--cream {
+  background: #fdf8f5;
+}
+
+.dest-section__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.dest-section__inner--reverse {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+
+.dest-section__inner--text-only {
+  grid-template-columns: 1fr;
+  max-width: 920px;
+}
+
+@media (max-width: 900px) {
+  .dest-section__inner,
+  .dest-section__inner--reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dest-section__text {
+  font-size: 0.96rem;
+  color: #4b5563;
+}
+
+.dest-section__eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #d04a25;
+  margin-bottom: 0.4rem;
+}
+
+.dest-section__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  margin: 0 0 0.8rem;
+  color: #111827;
+}
+
+.dest-section__body {
+  margin: 0 0 0.7rem;
+  line-height: 1.7;
+}
+
+.dest-section__body strong {
+  font-weight: 700;
+  color: #111827;
+}
+
+.dest-section__image-wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.dest-section__image {
+  width: 100%;
+  max-width: 420px;
+  height: 320px; /* même hauteur pour toutes les sections sur desktop */
+  border-radius: 1.7rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .dest-section__image-wrap {
+    justify-content: center;
+  }
+
+  .dest-section__image {
+    height: auto;
+    max-width: 100%;
+  }
+}
+

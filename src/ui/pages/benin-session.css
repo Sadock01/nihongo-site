@@ -1,0 +1,322 @@
+/* Page Bénin — session carte + panneaux autour */
+
+.benin-page {
+  --benin-bg-creme: #fdf8f5;
+  --benin-accent: #d04a25;
+  --benin-text: #1f2933;
+  --benin-text-muted: #6b7280;
+  --benin-card-bg: #ffffff;
+  --benin-card-border: #f3e4d5;
+  --benin-radius: 1rem;
+  --benin-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  --benin-shadow-soft: 0 4px 20px rgba(208, 74, 37, 0.06);
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+/* Header */
+.benin-session-header {
+  background-color: var(--benin-bg-creme);
+  padding: 1.5rem 0 4rem;
+}
+
+.benin-session-header__inner {
+  text-align: center;
+}
+
+.benin-session-header__eyebrow {
+  display: block;
+  color: var(--benin-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.benin-session-header__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  color: var(--benin-text);
+  margin: 0 0 1rem;
+}
+
+.benin-session-header__subtitle {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--benin-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Layout principal: gauche | carte | droite */
+.benin-session--map {
+  background: var(--benin-card-bg);
+  padding: 2rem 0 4rem;
+}
+
+.benin-session__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .benin-session__layout {
+    grid-template-columns: minmax(260px, 1fr) minmax(320px, 1.4fr) minmax(280px, 1fr);
+    gap: 2.5rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+/* Quand aucun département n'est sélectionné : une seule colonne, carte centrée */
+.benin-session__layout--map-only {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.benin-session__layout--map-only .benin-session__map-wrap {
+  width: 100%;
+  max-width: 560px;
+}
+
+/* Panneaux latéraux */
+.benin-session__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.benin-session__panel--left {
+  order: 2;
+}
+
+.benin-session__panel--right {
+  order: 3;
+}
+
+@media (min-width: 1024px) {
+  .benin-session__panel--left {
+    order: 1;
+  }
+  .benin-session__panel--right {
+    order: 3;
+  }
+}
+
+/* Carte au centre */
+.benin-session__map-wrap {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+@media (min-width: 1024px) {
+  .benin-session__map-wrap {
+    order: 2;
+  }
+}
+
+.benin-session__map-inner {
+  width: 100%;
+  max-width: 520px;
+  background: #f8f6f3;
+  border-radius: 2rem;
+  padding: 2rem 1rem;
+  box-shadow: var(--benin-shadow-soft);
+}
+
+.benin-session__hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--benin-text-muted);
+  text-align: center;
+}
+
+/* Cartes de contenu (groupes) */
+.benin-card {
+  background: var(--benin-card-bg);
+  border: 1px solid var(--benin-card-border);
+  border-radius: var(--benin-radius);
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--benin-shadow);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.benin-card:hover {
+  box-shadow: 0 14px 48px rgba(15, 23, 42, 0.1);
+}
+
+.benin-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.benin-card__header--sub {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.benin-card__icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--benin-accent);
+  flex-shrink: 0;
+}
+
+.benin-card__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--benin-text);
+  margin: 0;
+}
+
+.benin-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benin-card__list-item {
+  font-size: 0.875rem;
+  color: var(--benin-text-muted);
+  padding: 0.35rem 0;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.benin-card__list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--benin-accent);
+  opacity: 0.7;
+}
+
+.benin-card__paragraph {
+  font-size: 0.875rem;
+  color: var(--benin-text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Liste des communes (coin supérieur droit) */
+.benin-card--communes {
+  max-height: 280px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.benin-communes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.benin-commune-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem;
+  color: var(--benin-text);
+}
+
+.benin-commune-item:hover {
+  background: var(--benin-bg-creme);
+}
+
+.benin-commune-item--active {
+  background: rgba(208, 74, 37, 0.1);
+  color: var(--benin-accent);
+  font-weight: 600;
+}
+
+.benin-commune-item__chevron {
+  width: 1rem;
+  height: 1rem;
+  color: var(--benin-text-muted);
+  flex-shrink: 0;
+}
+
+.benin-commune-item--active .benin-commune-item__chevron {
+  color: var(--benin-accent);
+}
+
+/* Stats en bas de page */
+.benin-session-stats {
+  background: var(--benin-bg-creme);
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--benin-card-border);
+}
+
+.benin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.benin-stat__value {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--benin-accent);
+  margin-bottom: 0.25rem;
+}
+
+.benin-stat__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--benin-text-muted);
+  font-weight: 600;
+}
+
+/* Scrollbar douce pour la liste des communes */
+.benin-communes::-webkit-scrollbar {
+  width: 6px;
+}
+
+.benin-communes::-webkit-scrollbar-track {
+  background: #f5f0eb;
+  border-radius: 3px;
+}
+
+.benin-communes::-webkit-scrollbar-thumb {
+  background: var(--benin-card-border);
+  border-radius: 3px;
+}
+
+.benin-communes::-webkit-scrollbar-thumb:hover {
+  background: var(--benin-accent);
+  opacity: 0.5;
+}
