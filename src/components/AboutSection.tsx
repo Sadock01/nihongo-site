@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { useRef } from 'react';
 import { FiGlobe, FiUsers, FiLayers, FiFeather } from 'react-icons/fi';
+import { useI18n } from '../i18n';
 import './sections.css';
 
 import img1 from '../assets/musée-marina.jpg';
@@ -9,7 +10,6 @@ import img2 from '../assets/vod-1.jpg';
 import img3 from '../assets/ouadada-riviere-noire-1.jpg';
 import img4 from '../assets/place-no.jpg';
 
-// Animation pour le contenu textuel (Entrée par la gauche)
 const leftContentVariants: Variants = {
   hidden: { opacity: 0, x: -60 },
   visible: { 
@@ -19,7 +19,6 @@ const leftContentVariants: Variants = {
   }
 };
 
-// Animation pour le bloc photo (Entrée par la droite)
 const rightPhotoVariants: Variants = {
   hidden: { opacity: 0, x: 60 },
   visible: { 
@@ -30,15 +29,14 @@ const rightPhotoVariants: Variants = {
 };
 
 export function AboutSection() {
+  const { t } = useI18n()
   const sectionRef = useRef(null);
-  // L'animation se déclenche quand 20% de la section est visible
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
     <section id="about" className="section section--alt" ref={sectionRef}>
       <div className="container about-layout">
         
-        {/* CÔTÉ GAUCHE : TEXTE ET STATS */}
         <motion.div 
           className="about-layout__left"
           variants={leftContentVariants}
@@ -46,57 +44,45 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <header className="section__header">
-            <p className="section__eyebrow">À Propos</p>
-            <h2 className="section__title">Le Bénin, berceau du Vodoun</h2>
+            <p className="section__eyebrow">{t.about.eyebrow}</p>
+            <h2 className="section__title">{t.about.title}</h2>
           </header>
           
-          <p className="section__text">
-            Situé en Afrique de l&apos;Ouest, le Bénin est une terre de contrastes où l&apos;histoire
-            millénaire côtoie une nature préservée. Des plages dorées de la côte atlantique aux
-            savanes du Parc de la Pendjari, en passant par les villages lacustres de Ganvié, chaque
-            coin du pays raconte une histoire unique.
-          </p>
-          
-          <p className="section__text">
-            Ancien royaume du Dahomey, le Bénin est le berceau du Vodoun, une religion traditionnelle
-            reconnue officiellement depuis 1996. C&apos;est aussi une destination prisée pour son
-            patrimoine historique, sa gastronomie riche et l&apos;hospitalité légendaire de ses
-            habitants.
-          </p>
+          <p className="section__text">{t.about.text1}</p>
+          <p className="section__text">{t.about.text2}</p>
 
           <div className="about-stats">
             <div className="stat-card">
               <div className="stat-card__icon"><FiGlobe /></div>
               <div>
                 <p className="stat-card__value">114,763</p>
-                <p className="stat-card__label">km² de superficie</p>
+                <p className="stat-card__label">{t.about.stats.area}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-card__icon"><FiUsers /></div>
               <div>
                 <p className="stat-card__value">12M+</p>
-                <p className="stat-card__label">Habitants</p>
+                <p className="stat-card__label">{t.about.stats.population}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-card__icon"><FiLayers /></div>
               <div>
                 <p className="stat-card__value">2</p>
-                <p className="stat-card__label">Sites UNESCO</p>
+                <p className="stat-card__label">{t.about.stats.unesco}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-card__icon"><FiFeather /></div>
               <div>
                 <p className="stat-card__value">3</p>
-                <p className="stat-card__label">Parcs Nationaux</p>
+                <p className="stat-card__label">{t.about.stats.parks}</p>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* CÔTÉ DROIT : GRILLE DE PHOTOS ASYMÉTRIQUE */}
         <motion.div 
           className="about-layout__right"
           variants={rightPhotoVariants}
@@ -104,7 +90,6 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <div className="about-photos">
-            {/* COLONNE GAUCHE */}
             <div className="about-photos__col-1">
               <div 
                 className="about-photo about-photo--1" 
@@ -116,7 +101,6 @@ export function AboutSection() {
               />
             </div>
 
-            {/* COLONNE DROITE (Décalée vers le bas via CSS) */}
             <div className="about-photos__col-2">
               <div 
                 className="about-photo about-photo--3" 

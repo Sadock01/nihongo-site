@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { getDepartmentByName, type CommuneData } from '@/data/benin-data';
 import BeninMapInteractive from '@/components/benin-map/BeninMapInteractive';
+import { useI18n } from '../../i18n';
 import './benin-session.css';
 
 const containerVariants = {
@@ -41,6 +42,8 @@ const panelVariantsRight = {
 };
 
 function BeninPage() {
+  const { t } = useI18n();
+  const page = t.beninPage;
   const [selectedDeptId, setSelectedDeptId] = useState<string | null>(null);
   const [selectedCommune, setSelectedCommune] = useState<CommuneData | null>(null);
 
@@ -65,14 +68,14 @@ function BeninPage() {
             animate={{ opacity: 1, y: 0 }}
             className="benin-session-header__eyebrow"
           >
-            Explorer le Bénin
+            {page.eyebrow}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="benin-session-header__title"
           >
-            Les 77 Communes du Bénin
+            {page.title}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -80,8 +83,7 @@ function BeninPage() {
             transition={{ delay: 0.2 }}
             className="benin-session-header__subtitle"
           >
-            Cliquez sur un département pour découvrir ses communes, spécialités, traditions,
-            habillement et lieux historiques.
+            {page.subtitle}
           </motion.p>
         </div>
       </section>
@@ -110,7 +112,7 @@ function BeninPage() {
                 >
                   <div className="benin-card__header">
                     <Sparkles className="benin-card__icon" />
-                    <h3 className="benin-card__title">Spécialités</h3>
+                    <h3 className="benin-card__title">{page.labels.specialties}</h3>
                   </div>
                   <motion.ul className="benin-card__list" variants={containerVariants}>
                     {displayCommune.specialites.map((s, i) => (
@@ -130,7 +132,7 @@ function BeninPage() {
                 >
                   <div className="benin-card__header">
                     <Landmark className="benin-card__icon" />
-                    <h3 className="benin-card__title">Lieux historiques</h3>
+                    <h3 className="benin-card__title">{page.labels.historicalPlaces}</h3>
                   </div>
                   <motion.ul className="benin-card__list" variants={containerVariants}>
                     {displayCommune.lieuxHistoriques.map((l, i) => (
@@ -153,9 +155,7 @@ function BeninPage() {
               />
             </div>
             {!department && (
-              <p className="benin-session__hint">
-                Cliquez sur un département pour afficher ses communes et détails
-              </p>
+              <p className="benin-session__hint">{page.mapHint}</p>
             )}
           </div>
 
@@ -180,7 +180,7 @@ function BeninPage() {
                 >
                   <div className="benin-card__header">
                     <MapPin className="benin-card__icon" />
-                    <h3 className="benin-card__title">Communes</h3>
+                    <h3 className="benin-card__title">{page.labels.communes}</h3>
                   </div>
                   <motion.ul
                     className="benin-communes"
@@ -212,7 +212,7 @@ function BeninPage() {
                   >
                     <div className="benin-card__header">
                       <Shirt className="benin-card__icon" />
-                      <h3 className="benin-card__title">Habillement</h3>
+                      <h3 className="benin-card__title">{page.labels.clothing}</h3>
                     </div>
                     <p className="benin-card__paragraph">{displayCommune.habillement}</p>
                   </motion.div>
@@ -228,7 +228,7 @@ function BeninPage() {
                   >
                     <div className="benin-card__header">
                       <UtensilsCrossed className="benin-card__icon" />
-                      <h3 className="benin-card__title">Gastronomie</h3>
+                      <h3 className="benin-card__title">{page.labels.gastronomy}</h3>
                     </div>
                     <ul className="benin-card__list">
                       {displayCommune.mets.map((m, i) => (
@@ -239,7 +239,7 @@ function BeninPage() {
                     </ul>
                     <div className="benin-card__header benin-card__header--sub">
                       <Users className="benin-card__icon" />
-                      <h3 className="benin-card__title">Traditions</h3>
+                      <h3 className="benin-card__title">{page.labels.traditions}</h3>
                     </div>
                     <ul className="benin-card__list">
                       {displayCommune.traditions.map((t, i) => (
@@ -260,10 +260,10 @@ function BeninPage() {
         <div className="page-container">
           <div className="benin-stats">
             {[
-              { label: 'Départements', value: '12' },
-              { label: 'Communes', value: '77' },
-              { label: 'Habitants', value: '14M+' },
-              { label: 'km²', value: '114 763' },
+              { label: page.stats.departments, value: '12' },
+              { label: page.stats.communes, value: '77' },
+              { label: page.stats.inhabitants, value: '14M+' },
+              { label: page.stats.area, value: '114 763' },
             ].map((stat, i) => (
               <motion.div
                 key={i}

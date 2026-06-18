@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import type { Variants } from 'framer-motion'; // Ajoute Variants ici
+import type { Variants } from 'framer-motion';
+import { useI18n } from '../i18n';
 import './sections.css';
 import heroImage from '../assets/ganvié-23.jpg';
 
-// Définir les variantes EN DEHORS du composant pour un code plus propre
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -21,12 +21,14 @@ const itemVariants: Variants = {
     y: 0, 
     transition: { 
       duration: 0.8, 
-      ease: "easeOut" // Maintenant TypeScript sait que c'est une valeur valide
+      ease: "easeOut"
     } 
   },
 };
 
 export function HeroSection() {
+  const { t } = useI18n()
+
   return (
     <section id="hero" className="section hero">
       <motion.div 
@@ -35,7 +37,7 @@ export function HeroSection() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        <img src={heroImage} alt="Bénin paysage" />
+        <img src={heroImage} alt={t.hero.imageAlt} />
       </motion.div>
 
       <motion.div 
@@ -45,25 +47,24 @@ export function HeroSection() {
         animate="visible"
       >
         <motion.p className="badge" variants={itemVariants}>
-          En partenariat avec NIHONGO GAKKOU
+          {t.hero.badge}
         </motion.p>
 
         <motion.h1 className="hero__title" variants={itemVariants}>
-          Découvrez le
-          <span className="hero__title-highlight"> Bénin</span>
+          {t.hero.title}
+          <span className="hero__title-highlight">{t.hero.titleHighlight}</span>
         </motion.h1>
 
         <motion.p className="hero__subtitle" variants={itemVariants}>
-          Explorez les trésors cachés de l&apos;Afrique de l&apos;Ouest et découvrez la seule école
-          de langue japonaise de la sous-région.
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.div className="hero__actions" variants={itemVariants}>
           <a href="#destinations" className="btn btn--primary">
-            Explorer les destinations
+            {t.hero.ctaExplore}
           </a>
           <a href="#about" className="btn btn--ghost">
-            En savoir plus
+            {t.hero.ctaLearnMore}
           </a>
         </motion.div>
       </motion.div>
